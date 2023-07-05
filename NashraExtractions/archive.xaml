@@ -1,0 +1,88 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NashraExtractions"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="NashraExtractions.archive"
+        mc:Ignorable="d"
+      Title="القائمة الرئيسية" Height="1000" Width="1600" ResizeMode="NoResize"  WindowStartupLocation="CenterScreen" WindowStyle="None" SizeToContent="Manual" AllowsTransparency="True" KeyDown="Window_KeyDown" MouseMove="Window_MouseMove" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Window.Clip>
+        <RectangleGeometry Rect="0,0,1600,1000" RadiusX="20" RadiusY="20"/>
+    </Window.Clip>
+
+    <Grid>
+        <Button x:Name="CloseApp" Content="x" Background="Transparent" BorderThickness="0" FontSize="20" Foreground="Black" HorizontalAlignment="Left" Margin="1554,2,0,0" VerticalAlignment="Top" Click="CloseApp_Click"/>
+        <materialDesign:Card  HorizontalAlignment="Left" Margin="22,41,0,0" VerticalAlignment="Top" Width="1568" Height="949">
+            <Grid Margin="0,0,0,-14">
+
+                <TextBox  Width="250"  VerticalAlignment="Center" HorizontalAlignment="Left" x:Name="SearchTermTextBox" Margin="5,0,0,0"/>
+                <Button x:Name="deleteDoc" Content="حذف مكاتبة" FontFamily="Fanan" FontSize="20" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top" Width="144" Height="35" BorderBrush="#FFA02626" Background="#FFA02626" Click="deleteDoc_Click">
+                    <Button.Clip>
+                        <RectangleGeometry Rect="0,0,144,35" RadiusX="20" RadiusY="20"></RectangleGeometry>
+                    </Button.Clip>
+                </Button>
+                <materialDesign:PackIcon Kind="DeleteCircle" Height="20" Width="20" Margin="29,18,0,0" />
+                <Button x:Name="Reset" Content="    إالغاء" FontFamily="Fanan" FontSize="20" HorizontalAlignment="Left" Margin="472,10,0,0" VerticalAlignment="Top" Width="76" Height="36" BorderBrush="#FFA02626" Background="#FFA02626" Click="Reset_Click" Panel.ZIndex="1">
+                    <Button.Clip>
+                        <RectangleGeometry Rect="0,0,144,35" RadiusX="20" RadiusY="20"></RectangleGeometry>
+                    </Button.Clip>
+                </Button>
+                <materialDesign:PackIcon Kind="CancelBox" Panel.ZIndex="1" Height="20" Width="26" Margin="475,17,0,0" />
+                <Button x:Name="openDoc" Content="فتح مكاتبة" FontFamily="Fanan" FontSize="20" HorizontalAlignment="Left" Margin="173,10,0,0" VerticalAlignment="Top" Width="144" Height="35" BorderBrush="#FF2584ED" Background="#FF2584ED" Click="openDoc_Click_1">
+                    <Button.Clip>
+                        <RectangleGeometry Rect="0,0,144,35" RadiusX="20" RadiusY="20"></RectangleGeometry>
+                    </Button.Clip>
+                </Button>
+                <materialDesign:PackIcon Kind="OpenInApp" Height="20" Width="20" Margin="182,18,0,0" />
+
+
+                <Button x:Name="search" Content="بحث" FontFamily="Fanan" FontSize="20" HorizontalAlignment="Left" Margin="323,10,0,0" VerticalAlignment="Top" Width="144" Height="35" Background="#FF8AA092" BorderBrush="#FF8AA092" Click="search_Click">
+                    <Button.Clip>
+                        <RectangleGeometry Rect="0,0,189,35" RadiusX="20" RadiusY="20"></RectangleGeometry>
+                    </Button.Clip>
+                </Button>
+                <materialDesign:PackIcon Kind="Search" Height="20" Width="20" Margin="334,18,0,0" />
+
+
+                <TextBox HorizontalAlignment="Left"  x:Name="searchBox" Padding="5" BorderThickness="0.5" BorderBrush="Azure" Margin="467,10,0,0" FontSize="20" FontFamily="Fanan" TextWrapping="Wrap" FlowDirection="RightToLeft" VerticalAlignment="Top" Width="790" Height="35"/>
+
+
+                <materialDesign:Chip x:Name="resultCount" Content="عدد النتائج :         0" FontFamily="Fanan" FlowDirection="RightToLeft"  FontSize="20" Foreground="#FFB70E0E" Margin="708,55,0,0" VerticalAlignment="Top" Width="157" Panel.ZIndex="1"/>
+                <DataGrid x:Name="GridTable" FlowDirection="RightToLeft" RowHeaderWidth="300" CanUserAddRows="False" ColumnHeaderHeight="50" IsReadOnly="True"  Margin="19,77,0,56" FontFamily="Fanan" FontSize="20" SelectionChanged="GridTable_SelectionChanged" RowHeight="50" Background="#FFC5E6F3" >
+                    <!--<Style TargetType="{x:Type DataGridCell}">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="Red">
+                                    
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>-->
+                </DataGrid>
+                <ComboBox x:Name="SearchOption" HorizontalAlignment="Left" FontFamily="Fanan" FontSize="20" FlowDirection="RightToLeft" Margin="1262,10,0,0" VerticalAlignment="Top" Width="278" Height="35">
+                    <ComboBoxItem>عنوان المكاتبة</ComboBoxItem>
+                    <ComboBoxItem>التاريخ</ComboBoxItem>
+                    <ComboBoxItem>التاريخ من - إلى</ComboBoxItem>
+                    <ComboBoxItem>الشهر</ComboBoxItem>
+                    <ComboBoxItem>القسم</ComboBoxItem>
+                </ComboBox>
+
+            </Grid>
+        </materialDesign:Card>
+        <Label Content="أرشيف المكاتبات" FontFamily="Fanan" FontSize="30" HorizontalAlignment="Left" Margin="744,3,0,0" VerticalAlignment="Top" Foreground="#DD538058"/>
+        <materialDesign:PackIcon Kind="ArchiveArrowUpOutline" Height="30" Width="30" Margin="669,4,0,0" />
+        <Button x:Name="view_more" Content="عرض المزيد" FontFamily="Fanan" FontSize="20" HorizontalAlignment="Left" Margin="426,952,0,0" VerticalAlignment="Top" Width="700" Height="36"  BorderBrush="#FF2584ED" Background="#FF2584ED" Click="view_more_Click">
+            <Button.Clip>
+                <RectangleGeometry Rect="0,0,700,35" RadiusX="10" RadiusY="10"></RectangleGeometry>
+            </Button.Clip>
+        </Button>
+        <materialDesign:PackIcon Kind="PlusBoxMultiple" Height="20" Width="20" Margin="471,960,0,0" />
+
+
+
+
+    </Grid>
+
+
+</Window>
